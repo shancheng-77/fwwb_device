@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding:0;
+}
+
+ul,ol {
+  list-style:none;
+}
+p {
+  color: #eee;
+}
+.hover {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.hover:hover {
+
+  background-color: rgba(175, 167, 167, 0.73);
+}
+/*滚轮样式*/
+::-webkit-scrollbar
+{
+  width:5px;
+  height: 5px;
+  /*background-color:#F5F5F5;*/
+}
+::-webkit-scrollbar-thumb
+{
+  border-radius:10px;
+  -webkit-box-shadow:inset 0 0 6px rgba(84,92,98,0.6);
+}
