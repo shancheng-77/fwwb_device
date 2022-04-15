@@ -110,7 +110,7 @@ export function Equipment() {
             .map(n => ({
                 name: n.name,
                 utilization: n.utilization
-            })).slice(0,7)
+            })).filter(n => n.utilization !== 0).slice(0,7)
         setLineData(arr)
     },[wsData,selectedEquipment])
     return (

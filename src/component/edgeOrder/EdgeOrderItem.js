@@ -33,8 +33,8 @@ export function EdgeOrderItem({edgeOrderData,selected,setOrderID,setThisOrderInf
                  onClick={handleClick}
             >
                 <div style={{flex: '5 0 0 ',padding:'25px 10px 25px 20px',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
-                    <p style={{padding: '0 5px', fontSize: 16,height:20}}>订单编号:</p>
-                    <p style={{padding: '0 5px', fontSize: 16,height:20}}>{taskCode}</p>
+                    <p style={{padding: '0 5px', fontSize: 16,height:20}}>车间任务编号:</p>
+                    <p style={{padding: '0 5px', fontSize: 16,height:20}}>{taskCode?.split('-')[2]}</p>
                 </div>
                 <div style={{flex: '3 0 0 ', display: 'flex', justifyContent: "center", alignItems: 'center'}}>
                     <img alt={'状态'} src={statusImgUrl(status)}/>

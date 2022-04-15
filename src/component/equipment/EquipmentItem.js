@@ -37,12 +37,10 @@ export function EquipmentItem(props) {
             <Box style={{flex:'3 0 200px',display:'flex'}}>
                 <Box style={{flex:'2 0 50px',lineHeight:'25px'}}>
                     <p>设备：</p>
-                    <p>运行时间：</p>
                     <p>利用率：</p>
                 </Box>
                 <Box style={{flex:'3 0 100px',lineHeight:'25px'}}>
                     <p>{name}</p>
-                    <p>{costTime}</p>
                     <p>{initUtilization(utilization)}</p>
                 </Box>
             </Box>

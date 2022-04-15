@@ -3,15 +3,21 @@ import {useEffect, useState} from "react";
 export const isUndefined = (value) => (value === void 0)
 // 历史订单和正在进行订单格式不一样
 export const initTime = (time) => {
+    const a = (number) => {
+        if (number < 10) {
+            return '0' +number
+        }
+        return number
+    }
     if (!isUndefined(time)) {
         let date = new Date(time);
         let year = date.getFullYear();
-        let month = date.getMonth()+1;
-        let day = date.getDay();
+        let month = a(date.getMonth()+1);
+        let day = a(date.getDay());
 
-        let hour = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
+        let hour = a(date.getHours());
+        let minutes = a(date.getMinutes());
+        let seconds = a(date.getSeconds());
 
         return year+'-'+month+'-'+day+' '+hour+':'+minutes+':'+seconds;
     }
@@ -85,30 +91,30 @@ const getOption = (startTime,categories,data) => (
         },
 
         //缩放
-        dataZoom: [{
-            type: 'slider',
-            show : false,
-            filterMode: 'weakFilter',
-            showDataShadow: false,
-            top: 550,
-            height: 10,
-            borderColor: 'transparent',
-            backgroundColor: '#e2e2e2',
-            handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z', //jshint ignore:line
-            handleSize: 20,
-            handleStyle: {
-                shadowBlur: 6,
-                shadowOffsetX: 1,
-                shadowOffsetY: 2,
-                shadowColor: '#aaa'
-            },
-            labelFormatter: '',
-            start: 0,
-            end: 70,
-        }, {
-            type: 'inside',
-            filterMode: 'weakFilter'
-        }],
+        // dataZoom: [{
+        //     type: 'slider',
+        //     show : false,
+        //     filterMode: 'weakFilter',
+        //     showDataShadow: false,
+        //     top: 550,
+        //     height: 10,
+        //     borderColor: 'transparent',
+        //     backgroundColor: '#e2e2e2',
+        //     handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z', //jshint ignore:line
+        //     handleSize: 20,
+        //     handleStyle: {
+        //         shadowBlur: 6,
+        //         shadowOffsetX: 1,
+        //         shadowOffsetY: 2,
+        //         shadowColor: '#aaa'
+        //     },
+        //     labelFormatter: '',
+        //     start: 0,
+        //     end: 70,
+        // }, {
+        //     type: 'inside',
+        //     filterMode: 'weakFilter'
+        // }],
         grid: {
             top: 50,
             left: 100,
@@ -167,10 +173,12 @@ const getOption = (startTime,categories,data) => (
 
 export function GanttCharts({style,width=150,height=150,orderData={},jobColors={}}) {
 
-
+    useEffect(() => {
+        console.log(orderData)
+    },[orderData])
     const initEdgeOrderData = (edgeOrderData) => {
-        const proceduresMap = edgeOrderData.procedureTable.proceduresMap
-        const parallelProcedures = edgeOrderData.parallelProcedures;
+        const proceduresMap = edgeOrderData?.procedureTable?.proceduresMap || {}
+        const parallelProcedures = edgeOrderData?.parallelProcedures || {};
 
         const pStatus = Object.keys(proceduresMap).map((p,i) => {
             return proceduresMap[p].map((n,j) => {

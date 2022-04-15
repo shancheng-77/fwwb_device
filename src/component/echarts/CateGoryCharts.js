@@ -25,7 +25,7 @@ export function CateGoryCharts({style,data={},width=150,height=150}) {
         const option = {
             xAxis: {
                 type: 'category',
-                data: data.map(n => n.name)
+                data: data.map(n => n.name?.split('::')[1])
             },
             grid: {
                 top:30,
@@ -34,11 +34,12 @@ export function CateGoryCharts({style,data={},width=150,height=150}) {
                 bottom:50
             },
             yAxis: {
+                max:100,
                 type: 'value'
             },
             series: [
                 {
-                    data: data.map(n => n.utilization),
+                    data: data.map(n => n.utilization*100),
                     type: 'bar'
                 }
             ]
@@ -54,7 +55,7 @@ export function CateGoryCharts({style,data={},width=150,height=150}) {
             const option = {
                 xAxis: {
                     type: 'category',
-                    data: data.filter(n => n.utilization !== 0).map(n => n.name)
+                    data:data.map(n => n.name?.split('::')[1])
                 },
                 grid: {
                     top:30,
@@ -63,11 +64,12 @@ export function CateGoryCharts({style,data={},width=150,height=150}) {
                     bottom:50
                 },
                 yAxis: {
+                    max:100,
                     type: 'value'
                 },
                 series: [
                     {
-                        data: data.filter(n => n.utilization !== 0).map(n => n.utilization),
+                        data: data.map(n => n.utilization*100),
                         type: 'bar'
                     }
                 ]

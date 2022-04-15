@@ -59,7 +59,7 @@ export function EdgeOrder() {
     const [pendingEdgeOrder,setPendingEdgeOrder] = useState([]);
     const [historyEdgeOrder,setHistoryEdgeOrder] = useState([]);
     const [selectedItemInfo,setSelectedItemInfo] = useState({});
-    const [selectedItemID,setSelectedItemId] = useState(0);
+    const [selectedItemID,setSelectedItemId] = useState('');
     const [isChart,setIsChart] = useState(true);
 
     const [jobColor,setJobColor] = useState({});
@@ -167,7 +167,7 @@ export function EdgeOrder() {
                             !selectedItemInfo ? <Loading width={50}/> :
                                 <>
                                     <p style={{height:30,padding:'5px 20px',lineHeight:'30px',backgroundColor:'#283A4D'}}>
-                                        订单编号：{selectedItemID}
+                                        车间任务编号：{selectedItemID?.split('-')[2]}
                                     </p>
                                     <div style={{display:'flex',justifyContent:"space-between",alignItems:"center",padding:20,height:133}}>
                                         <ul style={{paddingLeft:50}}>
@@ -183,7 +183,7 @@ export function EdgeOrder() {
                     </div>
                     <div style={{ width: '100%',marginTop:20,height:330,overflowY:'auto',backgroundColor:'rgb(177 203 226)',position:"relative"}}>
                         <p style={{height:30,padding:'5px 20px',lineHeight:'30px',backgroundColor:'#283A4D'}}>
-                            订单工序流程
+                            车间任务工序流程
                         </p>
                         {
                             isChart && selectedItemInfo ? <GanttCharts width={760} height={280} orderData={selectedItemInfo} jobColors={jobColor}/> :

@@ -14,7 +14,7 @@ export function LineCharts({style,data={},width=150,height=150,wsData}) {
     // const [progress,setProgress] = useState(schedule)
     const [dom,setDom ]= useState(null)
     const [mycharts,setMycharts] = useState(null)
-    const chartsId = 'chart'+Date.now()
+    const chartsId = 'chart'+Date.now()+Math.random()
     let chartDom = null;
 
     useEffect(() => {

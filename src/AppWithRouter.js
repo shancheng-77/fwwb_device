@@ -10,7 +10,7 @@ export function AppWithRouter() {
             <Routes>
                 <Route
                     path="/"
-                    element={<Navigate to="/equipment" />}
+                    element={<Navigate to="/login" />}
                 />
                 <Route
                     path="/login"
